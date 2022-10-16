@@ -1,0 +1,61 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "What is the ratio of suicides per population in each age range",
+  "width": "1000",
+  "height": 500,
+  "data": {
+  "url": "https://raw.githubusercontent.com/ndea0002/FIT3179-Asgn2/main/Data/totalbyagegroup.csv"
+},
+"mark": {
+    "type": "circle",
+    "opacity": 0.6,
+    "stroke": "black",
+    "strokeWidth": 1
+  },
+  "transform": [
+      {
+        "calculate": "toNumber(datum.suicides_no)",
+        "as": "suicides"
+      },
+      {
+        "calculate": "toNumber(datum.population)",
+        "as": "pop"
+      }
+  ],
+"selection": {
+  "age_highlight": {
+"type": "multi",
+"fields": ["age"],
+"bind": "legend"
+  }
+},  
+"encoding": {
+  "x": {
+    "field": "pop",
+    "type": "quantitative",
+    "title":"Population"
+  },
+  "y": {
+    "field": "suicides",
+    "type": "quantitative"
+  },
+"color": {
+"field": "age",
+"type": "nominal"
+},
+"size": {
+"field": "population",
+"type": "quantitative"
+},
+"opacity": {
+"condition": {"selection": "age_highlight", "value": 0.8},
+"value": 0.1
+},
+"tooltip": [
+{"field": "year", "title": "Year"},
+{"field": "age",   "title" : "Age group"},
+{"field": "suicides", "type": "quantitative", "format": ","},
+{"field": "population", "type": "quantitative", "format": ","}
+]
+}   
+}
