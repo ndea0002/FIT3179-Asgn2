@@ -1,0 +1,154 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title" : "How is the economy affecting fatality rates",
+  "width": "container", "height": 500,
+  "background": "#ffffff",
+  "config": {
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    },
+    "axis": {"gridColor": "#efeff5", "titleColor":"#0f0f0f", "labelColor":"#050505", "labelFontSize": 13 , "titleFontSize": 15},
+    "legend": {"titleColor":"#0c0c0e", "labelColor":"#060607", "labelFontSize": 13 , "titleFontSize": 15}
+  },
+  "data": {"url": "https://raw.githubusercontent.com/ndea0002/FIT3179-Asgn2/main/Data/1999_2003.csv"},
+  "params": [
+    {
+      "name": "suicides_num",
+      "value": 0,
+      "bind": {
+      "input": "range",
+      "min": 0,
+      "max": 10000,
+      "step": 100,
+      "name": "Fatality rate "
+      }
+    },
+    {
+      "name": "year_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+          null,
+          
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003"
+        ],
+        "labels": [
+          "All",
+          
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003"
+        ],
+        "name": "Year Selection  "
+      }
+    }
+  ],
+  
+  "transform": [
+      {
+        "filter": "year_selection == null || datum.year == year_selection"
+      },
+      {
+          "calculate": "toNumber(datum.suicides_no)",
+          "as": "suicides"
+        },
+         {
+          "calculate": "toNumber(datum.gdp_per_capita)",
+          "as": "gdp"
+        },
+        {
+          "calculate": "toNumber(datum.population)",
+          "as": "Population"
+        },
+        {"filter": "datum.suicides > suicides_num"}
+  ],
+  
+  "encoding": {
+    "x": {
+      "field": "gdp",
+      "type": "quantitative",
+      "scale": {"type": "sqrt"},
+      "title":"GDP for the year"
+    },
+    "y": {
+      "field": "suicides",
+      "type": "quantitative"
+    }
+  
+  },
+  "layer":[
+    {
+      "mark": {
+        "type": "circle",
+      "opacity": 0.9,
+      "stroke": "black",
+      "strokeWidth": 1
+      },
+      "encoding": {
+      "color": {
+      "field": "year",
+      "type": "nominal",
+      "scale": {
+            "domain": [
+              "1999",
+              "2000",
+              "2001",
+              "2002",
+              "2003"
+            ]
+      }
+  },
+      "size": {
+      "field": "Population",
+      "type": "quantitative"
+  },
+
+        "tooltip": [
+         {"field": "year", "type": "nominal", "title": "Year"},
+         {"field": "country",   "title" : "Country"},
+         {"field": "suicides", "type": "quantitative", "format": ","},
+         {"field": "population", "type": "quantitative", "format": ","},
+         {"field": "gdp_for_year", "type": "quantitative", "format": ",d", "title" : "GDP for the year"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "right",
+        "baseline": "middle",
+        "dx": -12,
+        "fontSize": 11.5,
+        "fontStyle": "italic",
+        "fill": "#050505"
+      },
+      "encoding": {
+        "text": {"field": "country", "type": "nominal"},
+        "color": {"value": "#bebecc"},
+        "opacity": {
+        "condition": {
+        "test": "datum['country']== 'Russian Federation' & datum['year'] == '1999' || datum['country']== 'Japan' & datum['year'] == '1999' || datum['country']== 'United States' & datum['year'] == '1999'",
+      "value": 1
+      },
+      "value": 0
+      },
+      "tooltip": [
+        {"field": "year", "type": "nominal", "title": "Year"},
+  {"field": "country",   "title" : "Country"},
+  {"field": "suicides", "type": "quantitative", "format": ","},
+  {"field": "population", "type": "quantitative", "format": ","},
+  {"field": "gdp_per_capita", "type": "quantitative", "format": ",", "title" : "GDP per capita"}
+      ]
+      }
+      }
+    
+  ]
+}
