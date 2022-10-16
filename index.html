@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <script src="vis.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" media="all">
+
+    <title>Visualization for assignment2</title>
+</head>
+
+<body>
+
+ <div class = "page">
+
+    <!-- Main -->
+    
+    <div class = "heading-container">
+        <img src="Data/cover.jpg" alt="Snow" style="width:100%;">
+    </div>
+
+     <!-- first -->
+     <div class = "pure-g">
+        <div class="pure-u-1-1" >
+            <h2>Total number of suicides per country</h2>
+            
+        </div>
+    </div>
+
+    <!-- First chart -->
+    <div class = "container2">
+        <div class = "pure-g">
+            <div class="pure-u-1-1">
+                <div id="chart_1" >          
+        </div>
+    </div>
+</div>
+<div class = "pure-g">
+    <div class="pure-u-1-1">
+        <div class="description-center">
+            <p>
+                As the map denotes the country with the largest number of fatalities of   
+                <span style = "color: #e71010; font-weight: 700;"> 1,209,742
+                </span>  
+                has been reported from  
+                <span style = "color: #e71010; font-weight: 700;"> Russia. 
+                </span>  
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+    <!-- second -->
+    <div class = "pure-g">
+        <div class="pure-u-1-1">
+            <h2> 
+                Fatalities in comparison with population
+            </h2>
+        </div>
+    </div>
+
+    <!-- Second chart -->
+    <div class = "container">
+        <div class = "pure-g">
+            <div class="pure-u-3-4">
+                <div id="chart_2" class="vis-container">
+                </div>
+            </div>
+            
+           
+        </div>
+        <div class = "pure-g">
+            <div class="pure-u-1-1">
+                <div class="description-center">
+                    <p>
+                        The age groups in the legend can be selected to view the highlighted version of that particular age group.
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <!-- third -->
+    <div class = "pure-g">
+        <div class="pure-u-1-1">
+            <h2> 
+                Total fatalities in each age category
+            </h2>
+        </div>
+    </div>
+
+    <!-- Third chart -->
+    <div class = "container">
+        <div class = "pure-g">
+            <div class="pure-u-3-4">
+                <div id="chart_4" class="vis-container">
+                </div>
+            </div>
+            <div class="pure-u-1-4">
+                <p> The dataset denoted that people of the age 
+                    <span style = "color: #f91010; font-weight: 700;" > 35 - 54 years</span>
+                    have the highest fatality rate out of all the age groups.      
+                </p>
+                <p> The dataset also denotes that people of the age 
+                    <span style = "color: #f91010; font-weight: 700;" > 5 - 14 years</span>
+                    have the lowest fatality rate out of all the age groups.    
+                </p>
+                
+            </div>
+           
+        </div>
+    </div>
+
+    <!-- fourth -->
+    <div class = "pure-g">
+        <div class="pure-u-1-1">
+            <h2> 
+                fatality change through the years
+            </h2>
+        </div>
+    </div>
+
+    <!-- fourth chart -->
+    <div class = "container">
+        <div class = "pure-g">
+            <div class="pure-u-1-1">
+                <div id="chart_5">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- fifth -->
+    <div class = "pure-g">
+        <div class="pure-u-1-1">
+            <h2> 
+                Is the economy a reason for the number of fatalities
+            </h2>
+        </div>
+    </div>
+
+    <!-- fifth chart -->
+    <div class = "container">
+        <div class = "pure-g">
+            <div class="pure-u-1-1">
+                <div id="chart_3">
+                </div>
+            </div>
+           
+        </div>
+    
+        <div class = "pure-g">
+            <div class="pure-u-1-1">
+                <div class="description-center">
+                    <p>
+                        The chart above uses the years from <span style = "color: #e71010; font-weight: 700;">1999 - 2003
+                        </span> since they are the years which has recorded the <span style = "color: #e71010; font-weight: 700;">highest
+                        </span> number of fatalities as per the previous chart. We can see that the economy is a factor that affects the suicide rate. 
+                        The <span style = "color: #e71010; font-weight: 700;">lower</span> the GDP, <span style = "color: #e71010; font-weight: 700;">higher</span> the fatality rate since it makes it hard for people to survive in the economy. 
+                        Specially in <span style = "color: #e71010; font-weight: 700;">Russia </span>.
+
+                    </p>
+                    <p>
+                        As of 2016 there has been a total of 
+                        <span style = "color: #e71010; font-weight: 700;">6748420
+                        </span>  
+                        fatalities all around the world, which tells us that mental health and awareness is really important. 
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div>
+            <p class="center-text">Main data source used for this visualization: <a href="https://www.kaggle.com/datasets/russellyates88/suicide-rates-overview-1985-to-2016?select=master.csv" style="color:#137de0;">Link</a></p>
+        </div>
+    </div>
+    
+
+
+    
+ </body>
+
+</html>
